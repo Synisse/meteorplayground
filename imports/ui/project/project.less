@@ -5,6 +5,8 @@
   background-size: cover;
   background-position: center center;
   position: relative;
+  cursor: pointer;
+  user-select: none;
 
   .project-title {
     top: 0;
@@ -50,15 +52,15 @@
     bottom: 0;
     background-color: fade(@background-grey, 90%);
     opacity: 1;
-    transition: opacity 5s;
+    animation: blend-in .4s;
   }
 }
 
-@keyframes move-up {
+@keyframes blend-in {
   0% {
-    width: 100%;
+    opacity: 0;
   }
   100% {
-    width: 0;
+    opacity: 1;
   }
 }

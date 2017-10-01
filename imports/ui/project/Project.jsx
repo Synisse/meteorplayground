@@ -30,6 +30,10 @@ class Project extends Component {
         return aTechString;
     }
 
+    selectProject() {
+        this.props.selectProject(this.props.project);
+    }
+
     render() {
         return (
             <div
@@ -37,6 +41,7 @@ class Project extends Component {
                 style={{backgroundImage: "url(" + this.props.project.image + ")"}}
                 onMouseEnter={this.onMouseOver.bind(this)}
                 onMouseLeave={this.onMouseLeave.bind(this)}
+                onClick={this.selectProject.bind(this)}
             >
                 <div className={this.state.isMouseOver ? 'cover cover-hovered' : 'cover'}/>
                 <div className={this.state.isMouseOver ? 'project-title title-hovered' : 'project-title'}>
@@ -58,6 +63,8 @@ class Project extends Component {
 
 Project.propTypes = {
     project: PropTypes.object.isRequired,
+    selectProject: PropTypes.func.isRequired,
+    history: PropTypes.object
 };
 
 export default createContainer(() => {

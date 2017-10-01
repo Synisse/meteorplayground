@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Project from '../project/Project';
+import ProjectDetails from '../projectdetails/Projectdetails';
 
 const projects = [
     {
@@ -117,7 +118,8 @@ const projects = [
         "screenshots": [
             "http://i.imgur.com/Fli6QpR.png"
         ],
-        "longdescription": "A dynamic QuakeIII-styled paintball game built with Unity 3D. You can test the current state of the game right <a target=\"_blank\" href=\"http://devsyn.de/UnityTest/NetworkBuilds/webbuild0123.html\">here </a>.",
+        "longdescription": "A dynamic QuakeIII-styled paintball game built with Unity 3D. You can test the current state of the game right LINK123",
+        "longdescriptionlinks": [{"link": "http://devsyn.de/UnityTest/NetworkBuilds/webbuild0123.html", "placeholder":"here"}],
         "sourcecode": ""
     },
     {
@@ -137,7 +139,8 @@ const projects = [
         "percent": "80",
         "youtube": "",
         "screenshots": [],
-        "longdescription": "This app was built for the dutch webplatform <a target=\"_blank\" href=\"http://culimatch.nl/\">culimatch.nl </a> of the company culimedia. The app will be an easy to use and intuitive mobile alternative to the official website. The app is not yet published, but should be available soon.",
+        "longdescription": "This app was built for the dutch webplatform LINK123 of the company culimedia. The app will be an easy to use and intuitive mobile alternative to the official website. The app is not yet published, but should be available soon.",
+        "longdescriptionlinks": [{"link": "http://culimatch.nl/", "placeholder":"Culimatch"}],
         "sourcecode": ""
     },
     {
@@ -160,7 +163,8 @@ const projects = [
         "percent": "100",
         "youtube": "",
         "screenshots": [],
-        "longdescription": "This webapp was built for multiple platforms such as Chrome Extensions, Browser, Android and iOS App. You can find the webversion of this tool on the <a target=\"_blank\" href=\"https://www.forex4noobs.com/forex-tools/forex-clock/\">forex4noobs website </a>.",
+        "longdescription": "This webapp was built for multiple platforms such as Chrome Extensions, Browser, Android and iOS App. You can find the web version of this tool on the LINK123.",
+        "longdescriptionlinks": [{"link": "https://www.forex4noobs.com/forex-tools/forex-clock/", "placeholder":"forex4noobs website"}],
         "sourcecode": ""
     },
     {
@@ -225,18 +229,55 @@ const projects = [
 class ProjectsContainer extends Component {
     constructor(props) {
         super(props);
+        console.log('in ProjectsContainer');
+        console.log('this.props: ', props);
+
+        this.state = {
+            isProjectSelected: false,
+            selectedProject: null
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('new props: ', nextProps);
+        if (nextProps.match.params.id === '-') {
+
+        }
+    }
+
+    selectProject(aProject) {
+        // this.setState({
+        //     isProjectSelected: true,
+        //     selectedProject: aProject
+        // });
+
+        this.props.history.push('/projects/' + aProject.pid);
+    }
+
+    discardProject() {
+        // this.setState({
+        //     isProjectSelected: false,
+        //     selectedProject: null
+        // });
+        this.props.history.push('/projects/-');
     }
 
     renderProjects () {
         return projects.map((aProject) => {
-            return <Project key={aProject.pid} project={aProject}/>
+            return <Project key={aProject.pid} project={aProject} selectProject={this.selectProject.bind(this)}/>
         });
+    }
+
+    renderProjectDetails (aId) {
+        let selectedProject = projects.find(aProject => aProject.pid === aId);
+        return <ProjectDetails project={selectedProject} discardProject={this.discardProject.bind(this)}>DETAILS</ProjectDetails>
     }
 
     render() {
         return (
             <div className="projects-container">
-                {this.renderProjects()}
+                {this.props.match.params.id === '-' ? this.renderProjects() : this.renderProjectDetails(this.props.match.params.id)}
+                {this.state.isProjectSelected ? this.renderProjectDetails() : this.renderProjects()}
             </div>
         );
     }

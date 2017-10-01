@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Redirect } from 'react-router';
+import { Router, Route, Redirect, Switch } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import MainContainer from './ui/maincontainer/Main';
@@ -13,11 +13,19 @@ const browserHistory = createBrowserHistory();
 export const renderRoutes = () => (
     <Router history={browserHistory}>
         <div>
-            <NavBar/>
-            <Route exact path="/aboutme" component={MainContainer}/>
-            <Route exact path="/projects" component={ProjectsContainer}/>
-            <Route exact path="/contact" component={ContactContainer}/>
-            <Redirect from="/" to="/aboutme" />
+            <NavBar history={browserHistory}/>
+            <Switch>
+                <Route exact path="/aboutme" component={MainContainer}/>
+            </Switch>
+            <Switch>
+                <Route exact path="/projects/:id" component={ProjectsContainer}/>
+            </Switch>
+            <Switch>
+                <Route exact path="/contact" component={ContactContainer}/>
+            </Switch>
+            <Switch>
+                <Redirect exact from="/*" to="/aboutme" />
+            </Switch>
         </div>
     </Router>
 );
