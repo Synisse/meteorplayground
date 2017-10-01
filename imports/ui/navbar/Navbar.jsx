@@ -14,20 +14,28 @@ class NavbarContainer extends Component {
 
     // workaround to trigger component rerender
     selectEntry (aEntry) {
-        this.setState({selected: aEntry});
+        this.setState({selectedEntry: aEntry});
+    }
+
+    getActiveClass (aEntry) {
+        if(this.state.selectedEntry === aEntry) {
+            return 'link-font active-navbar-item';
+        }
+
+        return 'link-font';
     }
 
     render() {
         return (
             <div className="navbar-container">
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'aboutme')} activeClassName="active-navbar-item" className="link-font" to="/aboutme">About m</NavLink>
+                    <NavLink onClick={this.selectEntry.bind(this, 'aboutme')} className={this.getActiveClass.bind(this, 'aboutme')()} to="/aboutme">About me</NavLink>
                 </div>
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'projects')} activeClassName="active-navbar-item" className="link-font" to="/projects">Projects</NavLink>
+                    <NavLink onClick={this.selectEntry.bind(this, 'projects')} className={this.getActiveClass.bind(this, 'projects')()} to="/projects">Projects</NavLink>
                 </div>
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'contact')} activeClassName="active-navbar-item" className="link-font" to="/contact">Contact</NavLink>
+                    <NavLink onClick={this.selectEntry.bind(this, 'contact')} className={this.getActiveClass.bind(this, 'contact')()} to="/contact">Contact</NavLink>
                 </div>
             </div>
         );
