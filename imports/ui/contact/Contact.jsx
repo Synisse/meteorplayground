@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 import { createContainer } from 'meteor/react-meteor-data';
 
-class MainContainer extends Component {
+class ContactContainer extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className="main-container">
-                Main-Container
+            <div className="contact-container">
+                contact-Container
             </div>
         );
     }
@@ -18,4 +18,4 @@ class MainContainer extends Component {
 
 export default createContainer(() => {
     return {};
-}, MainContainer);
+}, ContactContainer);
