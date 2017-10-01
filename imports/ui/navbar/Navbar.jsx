@@ -33,21 +33,24 @@ class NavbarContainer extends Component {
     render() {
         return (
             <div className="navbar-container">
-                <div className="nav-bar-link-container">
-                    <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/aboutme')}>
-                        <div className={this.getActiveClass.bind(this, 'aboutme')()}>About</div>
+                <div className="navbar-wrapper">
+                    <div className="nav-bar-link-container left-button">
+                        <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/aboutme')}>
+                            <div className={this.getActiveClass.bind(this, 'aboutme')()}>About</div>
+                        </div>
+                    </div>
+                    <div className="nav-bar-link-container">
+                        <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/projects/-')}>
+                            <div className={this.getActiveClass.bind(this, 'projects')()}>Projects</div>
+                        </div>
+                    </div>
+                    <div className="nav-bar-link-container right-button">
+                        <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/contact')}>
+                            <div className={this.getActiveClass.bind(this, 'contact')()}>Contact</div>
+                        </div>
                     </div>
                 </div>
-                <div className="nav-bar-link-container">
-                    <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/projects/-')}>
-                        <div className={this.getActiveClass.bind(this, 'projects')()}>Projects</div>
-                    </div>
-                </div>
-                <div className="nav-bar-link-container">
-                    <div className="button-wrapper" onClick={this.selectEntry.bind(this, '/contact')}>
-                        <div className={this.getActiveClass.bind(this, 'contact')()}>Contact</div>
-                    </div>
-                </div>
+                <div className="bottom-bar"></div>
             </div>
         );
     }

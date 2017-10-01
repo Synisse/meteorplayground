@@ -1,46 +1,81 @@
 .navbar-container {
-  background-color: @green;
-  display: flex;
   max-width: 1024px;
-  margin: 0 auto 20px auto;
-  border-bottom: 1px solid @green;
+  margin: 0 auto 0 auto;
 
-  .nav-bar-link-container {
-    flex: 1;
-    text-align: center;
-    height: 88px;
-    width: 72px;
-    font-size: 18px;
-    background-color: @background-grey;
+  .navbar-wrapper {
+    display: flex;
+    max-width: 1024px;
+    margin: 0 auto 0 auto;
 
-    .button-wrapper {
-      width: 104px;
-      height: 48px;
+    .nav-bar-link-container {
+      text-align: center;
+      height: 88px;
+      width: 160px;
+      font-size: 18px;
+
+      .pink-button-wrapper {
+        background: linear-gradient(0deg, fade(@monokai-pink, 20%), fade(@monokai-pink, 25%));
+
+        :active {
+          background-color: fade(@monokai-pink, 5%);
+        }
+      }
+
+      .green-button-wrapper {
+        background: linear-gradient(0deg, fade(@green, 20%), fade(@green, 25%));
+
+        :active {
+          background-color: fade(@green, 5%);
+        }
+      }
+
+      .yellow-button-wrapper {
+        background: linear-gradient(0deg, fade(@yellow, 20%), fade(@yellow, 25%));
+
+        :active {
+          background-color: fade(@yellow, 5%);
+        }
+      }
+
+      .button-wrapper {
+        width: 160px;
+        height: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        line-height: 48px;
+        cursor: pointer;
+        user-select: none;
+
+        .link-font {
+          color: @orange;
+          text-decoration: none;
+        }
+
+        .link-font:hover {
+          color: darken(@yellow, 10%);
+        }
+
+        .link-font:active {
+          color: lighten(@yellow, 10%);
+        }
+      }
+    }
+
+    .left-button {
       margin-left: auto;
+    }
+
+    .right-button {
       margin-right: auto;
-      margin-top: 20px;
-      background: linear-gradient(0deg, @light-grey, lighten(@light-grey, 5%));
-      line-height: 48px;
-      border-radius: 8px;
-      .main-box-shadow;
-      border: 1px solid darken(@light-grey, 15%);
-      cursor: pointer;
-      user-select: none;
-
-      :active {
-        border-radius: 8px;
-        background: linear-gradient(0deg, lighten(@light-grey, 5%), lighten(@light-grey, 10%));
-      }
-
-      .link-font {
-        color: @orange;
-        text-decoration: none;
-      }
     }
+  }
 
-    .button-wrapper:active {
-      background: linear-gradient(0deg, lighten(@light-grey, 5%), lighten(@light-grey, 10%));
-    }
+  .bottom-bar {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, lighten(@light-grey, 50%) 50%, rgba(0,0,0,0) 100%);
+    margin-bottom: 32px;
   }
 
   .active-navbar-item {
