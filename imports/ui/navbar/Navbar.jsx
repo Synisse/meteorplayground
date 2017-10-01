@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import { createContainer } from 'meteor/react-meteor-data';
 
@@ -29,13 +29,19 @@ class NavbarContainer extends Component {
         return (
             <div className="navbar-container">
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'aboutme')} className={this.getActiveClass.bind(this, 'aboutme')()} to="/aboutme">About me</NavLink>
+                    <div className="button-wrapper">
+                        <NavLink onClick={this.selectEntry.bind(this, 'aboutme')} className={this.getActiveClass.bind(this, 'aboutme')()} to="/aboutme">About me</NavLink>
+                    </div>
                 </div>
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'projects')} className={this.getActiveClass.bind(this, 'projects')()} to="/projects">Projects</NavLink>
+                    <div className="button-wrapper">
+                        <NavLink onClick={this.selectEntry.bind(this, 'projects')} className={this.getActiveClass.bind(this, 'projects')()} to="/projects">Projects</NavLink>
+                    </div>
                 </div>
                 <div className="nav-bar-link-container">
-                    <NavLink onClick={this.selectEntry.bind(this, 'contact')} className={this.getActiveClass.bind(this, 'contact')()} to="/contact">Contact</NavLink>
+                    <div className="button-wrapper">
+                        <NavLink onClick={this.selectEntry.bind(this, 'contact')} className={this.getActiveClass.bind(this, 'contact')()} to="/contact">Contact</NavLink>
+                    </div>
                 </div>
             </div>
         );
@@ -43,5 +49,6 @@ class NavbarContainer extends Component {
 }
 
 export default createContainer(() => {
-    return {};
+    return {
+    };
 }, NavbarContainer);

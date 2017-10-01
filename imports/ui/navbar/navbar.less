@@ -8,15 +8,37 @@
   .nav-bar-link-container {
     flex: 1;
     text-align: center;
-    height: 72px;
+    height: 88px;
     width: 72px;
-    line-height: 72px;
     font-size: 18px;
     background-color: @background-grey;
 
-    .link-font {
-      color: @orange;
-      text-decoration: none;
+    .button-wrapper {
+      width: 104px;
+      height: 48px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      background: linear-gradient(0deg, @light-grey, lighten(@light-grey, 5%));
+      line-height: 48px;
+      border-radius: 8px;
+      .main-box-shadow;
+      border: 1px solid darken(@light-grey, 15%);
+      cursor: pointer;
+      user-select: none;
+
+      :active {
+        background: linear-gradient(0deg, lighten(@light-grey, 5%), lighten(@light-grey, 10%));
+      }
+
+      .link-font {
+        color: @orange;
+        text-decoration: none;
+      }
+    }
+
+    .button-wrapper:active {
+      background: linear-gradient(0deg, lighten(@light-grey, 5%), lighten(@light-grey, 10%));
     }
   }
 

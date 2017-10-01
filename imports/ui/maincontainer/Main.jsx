@@ -10,7 +10,21 @@ class MainContainer extends Component {
     render() {
         return (
             <div className="main-container">
-                Main-Container
+                <div className="content-area">
+                    <div className="info-text">
+
+                        /* <br/>
+                        * Hi, this is me!<br/>
+                        *<br/>
+                        *<br/>
+                        *<br/>
+                        */
+
+                    </div>
+                    <div className="profile-wrapper">
+                        <div className="profile-image"/>
+                    </div>
+                </div>
             </div>
         );
     }
