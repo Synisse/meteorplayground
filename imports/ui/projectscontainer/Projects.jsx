@@ -98,7 +98,7 @@ const projects = [
         "screenshots": [
             "http://i.imgur.com/H8JmdfX.png"
         ],
-        "longdescription": "",
+        "longdescription": "A Face Recognition implementation with C#.",
         "sourcecode": "https://github.com/Synisse/eigenfaces"
     },
     {
@@ -205,32 +205,27 @@ const projects = [
         "pid": "12",
         "name": "Devsyn Website",
         "technology": [
-            "MongoDB",
-            "Express",
-            "AngularJS",
-            "NodeJS",
+            "JavaScript",
+            "Node",
+            "React",
+            "Meteor",
             "HTML5",
             "CSS3",
-            "Yeoman",
-            "Grunt",
-            "Bower",
-            "Sass"
+            "Less"
         ],
         "description": "this.website",
         "image": "http://i.imgur.com/Xpq8Scm.png",
         "percent": "90",
         "youtube": "",
         "screenshots": [],
-        "longdescription": "",
-        "sourcecode": "https://github.com/Synisse/devsynwebsite"
+        "longdescription": "This site had lots of rewrites mostly because I learned about new technologies or frameworks.",
+        "sourcecode": "https://github.com/Synisse/meteorplayground"
     }
 ];
 
 class ProjectsContainer extends Component {
     constructor(props) {
         super(props);
-        console.log('in ProjectsContainer');
-        console.log('this.props: ', props);
 
         this.state = {
             isProjectSelected: false,
@@ -239,26 +234,16 @@ class ProjectsContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('new props: ', nextProps);
         if (nextProps.match.params.id === '-') {
 
         }
     }
 
     selectProject(aProject) {
-        // this.setState({
-        //     isProjectSelected: true,
-        //     selectedProject: aProject
-        // });
-
         this.props.history.push('/projects/' + aProject.pid);
     }
 
     discardProject() {
-        // this.setState({
-        //     isProjectSelected: false,
-        //     selectedProject: null
-        // });
         this.props.history.push('/projects/-');
     }
 
@@ -277,7 +262,6 @@ class ProjectsContainer extends Component {
         return (
             <div className="projects-container">
                 {this.props.match.params.id === '-' ? this.renderProjects() : this.renderProjectDetails(this.props.match.params.id)}
-                {this.state.isProjectSelected ? this.renderProjectDetails() : this.renderProjects()}
             </div>
         );
     }

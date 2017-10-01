@@ -9,13 +9,13 @@ class ProjectDetails extends Component {
     }
 
     generateHashtags() {
-        let aTechString = '';
-
-        this.props.project.technology.map((aTech) => {
-            aTechString = aTechString + '#' + aTech + ' ';
+        return this.props.project.technology.map((aTech) => {
+            return (
+                <div className="hashtag" key={aTech}>
+                    <span className="orange">{' #'}</span><span className="green">{aTech}</span>
+                </div>
+            );
         });
-
-        return aTechString;
     }
 
     discardProject() {
@@ -65,14 +65,26 @@ class ProjectDetails extends Component {
                             <i className="fa fa-times" aria-hidden="true"></i>
                         </div>
                     </div>
-                    <div className="content-container">
-                        <div className="title">
-                            Tags
+
+                    <div className="sideways-content-container">
+                        <div className="split-content">
+                            <div className="title">
+                                Description
+                            </div>
+                            <div className="content-area">
+                                {this.parseLongDescription()}
+                            </div>
                         </div>
-                        <div className="content-area">
-                            {this.generateHashtags()}
+                        <div className="split-content">
+                            <div className="title">
+                                Tags
+                            </div>
+                            <div className="hashtag-container">
+                                {this.generateHashtags()}
+                            </div>
                         </div>
                     </div>
+
                     {this.props.project.youtube.length > 0 ?
                         (
                             <div className="content-container">
@@ -86,14 +98,21 @@ class ProjectDetails extends Component {
                         )
                         : null
                     }
-                    <div className="content-container">
-                        <div className="title">
-                            Description
-                        </div>
-                        <div className="content-area">
-                            {this.parseLongDescription()}
-                        </div>
-                    </div>
+
+                    {this.props.project.screenshots.length > 0 ?
+                        (
+                            <div className="content-container">
+                                <div className="title">
+                                    Screenshots
+                                </div>
+                                <div className="image-container">
+                                    <img className="image" src={this.props.project.screenshots[0]}/>
+                                </div>
+                            </div>
+                        )
+                        : null
+                    }
+
                     {this.props.project.sourcecode.length > 0 ?
                         (
                             <div className="content-container">
