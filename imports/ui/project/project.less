@@ -1,0 +1,64 @@
+.project-container {
+  background-color: @green;
+  width: 25%;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+
+  .project-title {
+    top: 0;
+    z-index: 90;
+    text-align:center;
+    font-size: 26px;
+    margin-top: 76px;
+    height: 48px;
+    width: 100%;
+    position: absolute;
+    line-height: 48px;
+    transition: margin-top .2s;
+    color: @orange;
+    background-color: fade(@background-grey, 80%);
+  }
+
+  .title-hovered {
+    margin-top: 16px;
+    transition: margin-top .2s;
+  }
+
+  .cover {
+    background: @green;
+    z-index:85;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:.4;
+    transition: opacity .2s;
+  }
+
+  .cover-hovered {
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  .hashtag-container {
+    width: 100%;
+    padding: 8px;
+    color: @orange;
+    position: absolute;
+    bottom: 0;
+    background-color: fade(@background-grey, 90%);
+    opacity: 1;
+    transition: opacity 5s;
+  }
+}
+
+@keyframes move-up {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}

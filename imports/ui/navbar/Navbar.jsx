@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom'
+import { Link, NavLink, withRouter } from 'react-router-dom'
 
 import { createContainer } from 'meteor/react-meteor-data';
 
@@ -29,8 +29,8 @@ class NavbarContainer extends Component {
         return (
             <div className="navbar-container">
                 <div className="nav-bar-link-container">
-                    <div className="button-wrapper">
-                        <NavLink onClick={this.selectEntry.bind(this, 'aboutme')} className={this.getActiveClass.bind(this, 'aboutme')()} to="/aboutme">About me</NavLink>
+                    <div className="button-wrapper" onClick={this.selectEntry.bind(this, 'aboutme')}>
+                        <Link className={this.getActiveClass.bind(this, 'aboutme')()} to="/aboutme">About me</Link>
                     </div>
                 </div>
                 <div className="nav-bar-link-container">
