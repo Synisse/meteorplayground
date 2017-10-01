@@ -1,3 +1,20 @@
 .navbar-container {
   background-color: @green;
+  display: flex;
+
+  .nav-bar-link-container {
+    flex: 1;
+    height: 40px;
+    width: 40px;
+    background-color: @background-grey;
+
+    .link-font {
+      color: @orange;
+      text-decoration: none;
+    }
+  }
+
+  .active-navbar-item {
+    color: @yellow !important;
+  }
 }
