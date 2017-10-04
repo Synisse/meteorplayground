@@ -198,7 +198,7 @@ const projects = [
         "percent": "70",
         "youtube": "",
         "screenshots": [],
-        "longdescription": "",
+        "longdescription": "An Android app to learn some advanced math.",
         "sourcecode": ""
     },
     {
@@ -248,8 +248,24 @@ class ProjectsContainer extends Component {
     }
 
     renderProjects () {
+        const colorArray = [
+            {pid: 1, color: 'pink'},
+            {pid: 2, color: 'yellow'},
+            {pid: 3, color: 'green'},
+            {pid: 4, color: 'purple'},
+            {pid: 5, color: 'orange'},
+            {pid: 6, color: 'pink'},
+            {pid: 7, color: 'yellow'},
+            {pid: 8, color: 'green'},
+            {pid: 9, color: 'purple'},
+            {pid: 10, color: 'orange'},
+            {pid: 11, color: 'pink'},
+            {pid: 12, color: 'yellow'},
+        ];
         return projects.map((aProject) => {
-            return <Project key={aProject.pid} project={aProject} selectProject={this.selectProject.bind(this)}/>
+            let colorValue = colorArray.find(aColor => aProject.pid == aColor.pid);
+
+            return <Project key={aProject.pid} project={aProject} selectProject={this.selectProject.bind(this)} color={colorValue.color}/>
         });
     }
 

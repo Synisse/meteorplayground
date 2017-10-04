@@ -34,6 +34,35 @@ class Project extends Component {
         this.props.selectProject(this.props.project);
     }
 
+    getCoverClass() {
+        let coverClass = 'white-cover';
+
+        // switch(this.props.color) {
+        //     case 'pink':
+        //         coverClass = 'pink-cover';
+        //         break;
+        //     case 'yellow':
+        //         coverClass = 'yellow-cover';
+        //         break;
+        //     case 'green':
+        //         coverClass = 'green-cover';
+        //         break;
+        //     case 'purple':
+        //         coverClass = 'purple-cover';
+        //         break;
+        //     case 'white':
+        //         coverClass = 'white-cover';
+        //         break;
+        //     case 'orange':
+        //         coverClass = 'white-cover';
+        //         break;
+        //     default:
+        //         break;
+        // }
+
+        return coverClass;
+    }
+
     render() {
         return (
             <div
@@ -43,7 +72,7 @@ class Project extends Component {
                 onMouseLeave={this.onMouseLeave.bind(this)}
                 onClick={this.selectProject.bind(this)}
             >
-                <div className={this.state.isMouseOver ? 'cover cover-hovered' : 'cover'}/>
+                <div className={this.state.isMouseOver ? this.getCoverClass.bind(this)() + ' cover-hovered' : this.getCoverClass.bind(this)()}/>
                 <div className={this.state.isMouseOver ? 'project-title title-hovered' : 'project-title'}>
                     {this.props.project.name}
                 </div>
@@ -64,7 +93,8 @@ class Project extends Component {
 Project.propTypes = {
     project: PropTypes.object.isRequired,
     selectProject: PropTypes.func.isRequired,
-    history: PropTypes.object
+    history: PropTypes.object,
+    color: PropTypes.string.isRequired
 };
 
 export default createContainer(() => {

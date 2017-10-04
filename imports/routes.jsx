@@ -5,6 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import MainContainer from './ui/maincontainer/Main';
 import ProjectsContainer from './ui/projectscontainer/Projects';
 import ContactContainer from './ui/contact/Contact';
+import Footer from './ui/footer/Footer';
 
 import NavBar from './ui/navbar/Navbar';
 
@@ -26,6 +27,7 @@ export const renderRoutes = () => (
             <Switch>
                 <Redirect exact from="/*" to="/aboutme" />
             </Switch>
+            <Footer/>
         </div>
     </Router>
 );
